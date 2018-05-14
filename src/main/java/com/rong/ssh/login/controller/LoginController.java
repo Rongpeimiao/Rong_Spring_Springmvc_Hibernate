@@ -1,30 +1,66 @@
 package com.rong.ssh.login.controller;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rong.ssh.login.entity.UserDTO;
 import com.rong.ssh.login.service.LoginService;
 /** 
  * @version  
- * @time 2018-2-28 ÏÂÎç5:57:07 
- * @describe:¿ØÖÆÆ÷
+ * @time 2018-2-28 ä¸‹åˆ5:57:07 
+ * @describe:æ§åˆ¶å™¨
  */
-@Controller  //×¢½âÎª¿ØÖÆÆ÷
-@RequestMapping(value="/login")    //½Ø»ñ´øÓĞ/loginµÄÇëÇó
+@Controller  //æ³¨è§£ä¸ºæ§åˆ¶å™¨
+@RequestMapping(value="/login")    //æˆªè·å¸¦æœ‰/loginçš„è¯·æ±‚
 public class LoginController {
 
 	@Autowired
-    LoginService loginService;  //×¢Èëservice²ã
+    LoginService loginService;  //æ³¨å…¥serviceå±‚
 	
     @RequestMapping(method=RequestMethod.GET)
-    public String get(){  //ÓÃÀ´·µ»ØÒ»¸öÒ³Ãæ
-        return "login";  //·µ»ØÖ¸Ïòlogin.jspÒ³Ãæ
+    public String get(){  //ç”¨æ¥è¿”å›ä¸€ä¸ªé¡µé¢
+        return "login";  //è¿”å›æŒ‡å‘login.jspé¡µé¢
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public String post(UserDTO user){  //ÓÃÀ´´¦ÀíÓÃ»§µÄµÇÂ½ÇëÇó
-        return "login_success";
+    public String post(UserDTO user){  //ç”¨æ¥å¤„ç†ç”¨æˆ·çš„ç™»é™†è¯·æ±‚
+    	 if (loginService.login(user.getUserName(), user.getPassword())==1) {
+             return "login_success";  //ç™»é™†æˆåŠŸï¼Œè·³è½¬åˆ°login_success.jspé¡µé¢
+         }
+         return "login";
+    }
+    
+    @RequestMapping(method=RequestMethod.GET,value="/getmap")
+    @ResponseBody
+    public Map<String, Object>  getmap(){  //ç”¨æ¥å¤„ç†ç”¨æˆ·çš„ç™»é™†è¯·æ±‚
+    	  Map<String, Object> maps=new HashMap<>();
+    	  maps.put("æ‚Ÿç©º", "æ˜¯ä¸ªçŒ´å­");
+        return maps;
+    }
+    
+    @RequestMapping(method=RequestMethod.GET,value="/getuser")
+    @ResponseBody
+    public UserDTO  getuse(){  //ç”¨æ¥å¤„ç†ç”¨æˆ·çš„ç™»é™†è¯·æ±‚
+    	 UserDTO u=new UserDTO();
+    	 u.setUserName("ä¸‰è—");
+        return u;
+    }
+    @RequestMapping(value="/getList")
+    @ResponseBody
+    public List<Map<String, Object>>  getjson(){  //ç”¨æ¥å¤„ç†ç”¨æˆ·çš„ç™»é™†è¯·æ±‚
+    	 Map<String, Object> maps=new HashMap<>();
+   	     maps.put("å…«æˆ’","æ˜¯ä¸ªçŒª");
+   	     List<Map<String, Object>>  ls=new ArrayList<Map<String, Object>>();
+   	     ls.add(maps);
+        return ls;
     }
 }

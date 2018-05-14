@@ -43,12 +43,12 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>3.6.9.Final</version>
+            <version>5.0.1.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.6.9.Final</version>
+            <version>5.0.1.Final</version>
         </dependency>
         <!-- hibernate 配置 end -->
 
@@ -84,5 +84,34 @@
             <artifactId>commons-pool</artifactId>
             <version>1.6</version>
         </dependency>
+        <!-- 返回json，map -->
+        <dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.4.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.4.3</version>
+		</dependency>
+		<dependency>  
+          <groupId>com.fasterxml.jackson.core</groupId>  
+          <artifactId>jackson-annotations</artifactId>  
+          <version>2.7.0</version>  
+      </dependency> 
+      
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180130</version>
+		</dependency>
+		
+		<!-- jquery -->
+		<!-- <dependency>
+			    <groupId>org.webjars.bower</groupId>
+			    <artifactId>jquery</artifactId>
+			    <version>3.3.1</version>
+			</dependency> -->
     </dependencies>
 </project>

@@ -29,5 +29,6 @@
     </bean>  
 
     <!-- 配置静态资源 -->
-    <mvc:resources location="/res/" mapping="/res/**"/>  
+    <mvc:resources location="/res/" mapping="/res/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>  
 </beans> 

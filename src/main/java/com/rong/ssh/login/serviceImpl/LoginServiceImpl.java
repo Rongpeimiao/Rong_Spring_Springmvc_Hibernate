@@ -1,10 +1,11 @@
 package com.rong.ssh.login.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rong.ssh.login.dao.UserDao;
 import com.rong.ssh.login.service.LoginService;
-
+@Service
 public class LoginServiceImpl implements LoginService {
 	
 	@Autowired
