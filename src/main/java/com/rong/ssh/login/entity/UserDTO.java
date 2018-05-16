@@ -4,7 +4,13 @@ public class UserDTO {
 	 private Integer id;
 	    private String userName;
 	    private String password;
-
+	    public UserDTO() {  
+	    } 
+	    public UserDTO(Integer id, String username, String password) {  
+	        this.id = id;  
+	        this.userName = username;  
+	        this.password = password;  
+	    }
 	    public Integer getId() {
 	        return id;
 	    }
